@@ -1,6 +1,10 @@
 import React from 'react'
 import {BsFillBagPlusFill} from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 function Navbar() {
+useSelector((state)=>console.log(state))
+    // console.log(amount)
+
   return (
     <div>
          <div className='navbar__container'>
