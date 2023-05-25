@@ -2,8 +2,8 @@ import React from 'react'
 import {BsFillBagPlusFill} from 'react-icons/bs'
 import { useSelector } from 'react-redux'
 function Navbar() {
-useSelector((state)=>console.log(state))
-    // console.log(amount)
+const {amount}=useSelector((state)=>state.cart)
+    console.log(amount)
 
   return (
     <div>
@@ -17,7 +17,7 @@ useSelector((state)=>console.log(state))
                 
             </div>
             <div className='navbar__container__card__container-count'>
-                <p>0</p>
+                <p>{amount}</p>
             </div>
         </div>
     </div>

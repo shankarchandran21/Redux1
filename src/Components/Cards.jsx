@@ -3,11 +3,15 @@ import React from 'react'
 import CardsItem from './CardsItem'
 
 import {data } from '../data.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../features/Features'
 
 function Cards() {
-   
+   const {amount,total,cartItems} = useSelector((store)=>store.cart)
+  const dispatch = useDispatch()
 
-    if(data.length <= 0) {
+  console.log(cartItems)
+    if(cartItems.length<= 0) {
       return<>
         <div className='cards__container-empty'>
           <h1>Your Bag</h1>
@@ -24,18 +28,18 @@ function Cards() {
         <h1>Your Bag</h1>
       </div>
       <div className='cardies__container-items'>
-        {data.map((items)=><CardsItem key={items.id} {...items}/>)}
+        {cartItems.map((items)=><CardsItem key={items.id} {...items}/>)}
       </div>
       <div className='cardies__container-footer'>
           <hr />
       <div className='cardies__container-total'>
         <h3>Total</h3>
-        <p>$ 4743534</p>
+        <p>$ {total}</p>
         
       </div>
-     {data.length>0&&(
+     {cartItems.length>0&&(
        <div className='cardies__container-button'>
-        <button type='button' className='clear-btn'>clear all</button>
+        <button type='button' className='clear-btn' onClick={()=>dispatch(clearCart())}>clear all</button>
       </div>
      )}
       </div>
